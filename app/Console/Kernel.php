@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        Commands\daily_spine_update::class,
     ];
 
     /**
@@ -24,7 +25,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('check:daily_spine_sync')->everyMinute();
+        $schedule->command('check:token_purging')->everyMinute();
+
     }
 
     /**
