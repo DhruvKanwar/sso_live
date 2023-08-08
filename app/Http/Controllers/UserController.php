@@ -208,7 +208,7 @@ class UserController extends Controller
                 $data['user_ip'] = \Request::ip();
                 $store = "";
 
-                if (empty($check_email_exists)) {
+                if (empty($check_email_exists) || $check_email_exists==null ) {
                     $store = User::create($data);
                 } else {
                     if (!$status) {
