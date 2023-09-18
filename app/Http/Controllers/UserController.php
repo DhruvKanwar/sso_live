@@ -207,8 +207,10 @@ class UserController extends Controller
                 $data['role_id'] = '3';
                 $data['user_ip'] = \Request::ip();
                 $store = "";
+                
+                $check_email=User::where('email',$data['email'])->first();
 
-                if (empty($check_email_exists) || $check_email_exists==null ) {
+                if (empty($check_email_exists) && empty($check_email) ) {
                     $store = User::create($data);
                 } else {
                     if (!$status) {
