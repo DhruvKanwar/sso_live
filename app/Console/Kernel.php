@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('check:daily_spine_sync')->everyTenMinutes();
+        $schedule->command('check:daily_spine_sync')->everyTenMinutes();
         $schedule->command('check:token_purging')->dailyAt('00:00');
 
     }
